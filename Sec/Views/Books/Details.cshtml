@@ -1,0 +1,55 @@
+﻿@model Book
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Автор:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class="col-sm-2">
+            Жанр:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            Цена:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price) руб.
+        </dd>
+    </dl>
+</div>
+
+<hr />
+
+<h3>Комментарии</h3>
+
+@if (Model.Comments != null && Model.Comments.Any())
+{
+    foreach (var comment in Model.Comments)
+    {
+        <p>@comment.Text</p>
+    }
+}
+else
+{
+    <p>Пока нет комментариев.</p>
+}
+
+<h4>Оставить комментарий</h4>
+<form asp-action="AddComment" method="post">
+    <input type="hidden" name="bookId" value="@Model.Id" />
+    <div class="form-group">
+        <textarea name="commentText" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Отправить</button>
+</form>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
