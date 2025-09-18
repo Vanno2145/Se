@@ -1,0 +1,18 @@
+﻿@model AuthApp.Models.User
+
+<h2>Регистрация</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label>Имя пользователя:</label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label>Пароль:</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+<a asp-action="Login">Уже есть аккаунт? Войти</a>

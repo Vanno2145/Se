@@ -1,0 +1,8 @@
+﻿@model AuthApp.Models.User
+
+<h2>Профиль пользователя</h2>
+
+<p>Имя пользователя: @Model.Username</p>
+<p>ID: @Model.Id</p>
+
+<a asp-action="Logout" asp-controller="Account">Выйти</a>
